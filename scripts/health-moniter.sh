@@ -2,7 +2,7 @@
 # scripts/system_health_monitor.sh
 # Requires: awk, grep, df, free, ps
 
-LOGFILE="/tmp/sys_health.log"
+LOGFILE="/tmp/sys_health_$(date +"%Y%m%d_%H%M%S").log"
 CPU_THRESHOLD=80
 MEM_THRESHOLD=80
 DISK_THRESHOLD=85

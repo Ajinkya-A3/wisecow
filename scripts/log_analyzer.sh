@@ -7,6 +7,9 @@ if [ -z "$LOGFILE" ] || [ ! -f "$LOGFILE" ]; then
   exit 1
 fi
 
+
+OUTFILE="/tmp/log_analysis_$(date +"%Y%m%d_%H%M%S").log"
+{
 echo "===== Log Analysis Report ====="
 echo "Log file: $LOGFILE"
 echo
@@ -25,3 +28,4 @@ echo
 echo "Top 10 IP addresses:"
 awk '{print $1}' "$LOGFILE" | sort | uniq -c | sort -nr | head -10
 echo "================================"
+} | tee "$OUTFILE"
