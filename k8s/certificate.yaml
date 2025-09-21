@@ -10,9 +10,9 @@ spec:
   subject:
     organizations:
       - WisecowApp
-  commonName: "192.168.1.100"    # <-- replace with your Linux VM IP
-  ipAddresses:
-    - "192.168.1.100"            # <-- replace with your Linux VM IP
+  commonName: "wisecow.local"
+  dnsNames:
+    - "wisecow.local"       # use DNS instead of IP
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer

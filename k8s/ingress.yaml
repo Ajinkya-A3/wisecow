@@ -7,10 +7,10 @@ metadata:
 spec:
   tls:
   - hosts:
-      - "192.168.1.100"    # your VM IP
+      - "wisecow.local"
     secretName: wisecow-tls
   rules:
-  - host: "192.168.1.100"
+  - host: "wisecow.local"
     http:
       paths:
       - path: /
