@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-  IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/wisecow
+  # Directly set IMAGE_NAME using secrets (instead of referencing env.DOCKER_USERNAME)
+  IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/wisecow
 
 jobs:
   build-and-push:
@@ -21,7 +21,6 @@ jobs:
 
       # Get short SHA for tagging
       - name: Get short SHA
-        id: vars
         run: echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Log in to Docker Hub
@@ -31,12 +30,10 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build Docker image
-        run: |
-          docker build -t ${{ env.IMAGE_NAME }}:${{ env.SHA }} .
+        run: docker build -t $IMAGE_NAME:$SHA .
 
       - name: Push Docker image
-        run: |
-          docker push ${{ env.IMAGE_NAME }}:${{ env.SHA }}
+        run: docker push $IMAGE_NAME:$SHA
 
   edit-manifests:
     name: Edit Deployment Manifests
@@ -49,14 +46,10 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "IMAGE_NAME=${{ env.IMAGE_NAME }}" >> $GITHUB_ENV
-          echo "SHA=${{ env.SHA }}" >> $GITHUB_ENV
+          echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
+          echo "SHA=${SHA}" >> $GITHUB_ENV
 
       - name: Update deployment YAML
         run: |
           # Replace the placeholder in dep.yaml with the current image
-          sed -i "s|image:.*|image: ${{ env.IMAGE_NAME }}:${{ env.SHA }}|" k8s/dep.yaml
-
-          
-
-     
+          sed -i "s|image:.*|image: $IMAGE_NAME:$SHA|" k8s/dep.yaml
