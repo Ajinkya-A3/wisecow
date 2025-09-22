@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: wisecow
-        image: <IMAGE_PLACEHOLDER>  
+        image: at1asflame/wisecow:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4499
