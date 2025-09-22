@@ -1,5 +1,5 @@
 # Use a small base with bash available
-FROM ubuntu:24.04
+FROM debian:stable-slim
 
 # Avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
@@ -9,6 +9,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       fortune-mod \
       cowsay \
+      fortunes \
       netcat-openbsd \
       bash && \
     rm -rf /var/lib/apt/lists/*
