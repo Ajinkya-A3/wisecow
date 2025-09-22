@@ -1,0 +1,33 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: zero-trust-wisecow
+  namespace: default
+spec:
+  severity: 5
+  message: "Zero-trust policy violation in wisecow"
+  selector:
+    matchLabels:
+      app: wisecow   
+  process:
+    matchPaths:
+    - path: /bin/bash
+    - path: /usr/games/fortune
+    - path: /usr/games/cowsay
+    - path: /usr/bin/nc
+    - path: /app/wisecow.sh
+    action: Allow
+  file:
+    matchDirectories:
+    - dir: /app/
+      recursive: true
+      readOnly: false
+    action: Allow
+  network:
+    matchProtocols:
+    - protocol: TCP
+      direction: Out
+    - protocol: TCP
+      direction: In
+    action: Allow
+  action: Block
