@@ -13,8 +13,12 @@ RUN apt-get update && \
       bash && \
     rm -rf /var/lib/apt/lists/*
 
+
 # Create app user
 RUN useradd -m -s /bin/bash wisecow
+
+# Add /usr/games to PATH for all users
+ENV PATH="/usr/games:${PATH}"
 
 WORKDIR /app
 
