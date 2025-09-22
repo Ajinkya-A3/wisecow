@@ -57,4 +57,6 @@ jobs:
           # Replace the placeholder in dep.yaml with the current image
           sed -i "s|image:.*|image: ${{ env.IMAGE_NAME }}:${{ env.SHA }}|" k8s/dep.yaml
 
+          
+
      
