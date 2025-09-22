@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# scripts/system_health_monitor.sh
+# scripts/health-monitor.sh
 # Requires: awk, grep, df, free, ps
 
 LOGFILE="/tmp/sys_health_$(date +"%Y%m%d_%H%M%S").log"
