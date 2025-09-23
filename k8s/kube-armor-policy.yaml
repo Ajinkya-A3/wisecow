@@ -11,11 +11,10 @@ spec:
       app: wisecow
   process:
     matchPaths:
-      - path: /bin/bash
-      - path: /usr/games/fortune
-      - path: /usr/games/cowsay
-      - path: /usr/bin/nc
-      - path: /app/wisecow.sh
+      - path: /app/wisecow.sh       # main script
+      - path: /usr/games/fortune    # fortune program
+      - path: /usr/games/cowsay     # cowsay program
+      - path: /usr/bin/nc           # netcat-openbsd
     action: Allow
   file:
     matchDirectories:
@@ -26,6 +25,6 @@ spec:
   network:
     matchProtocols:
       - protocol: TCP
-      - protocol: UDP
+      - protocol: UDP   # needed for netcat if used with UDP
     action: Allow
   action: Block
