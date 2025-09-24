@@ -28,4 +28,5 @@ spec:
       - protocol: TCP
       - protocol: UDP   # needed for netcat if used with UDP
     
-  action: Allow
+  action: 
+    Allow
