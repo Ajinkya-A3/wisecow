@@ -17,7 +17,7 @@ spec:
       - path: /usr/bin/nc           # netcat-openbsd
       - path: /usr/bin
   file:
-    matchDirectories:a
+    matchDirectories:
       - dir: /app/
         recursive: true
         readOnly: false
