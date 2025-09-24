@@ -85,7 +85,7 @@ karmor logs -n default --json
 
 ## 5. References
 
-* [KubeArmor Official Documentation](https://kubearmor.com/docs/)
+* [KubeArmor Official Documentation](https://docs.kubearmor.io/kubearmor/quick-links/deployment_guide)
 * [KubeArmor GitHub](https://github.com/kubearmor/KubeArmor)
 
 ---
