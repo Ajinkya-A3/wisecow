@@ -9,7 +9,7 @@ This guide explains how to set up Minikube in a VM, deploy the Wisecow app with 
 ```bash
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
-minikube start --driver=none
+minikube start 
 ```
 
 ---
@@ -44,6 +44,10 @@ Find your VM's IP address:
 
 ```bash
 ip addr | grep inet
+```
+
+```bash
+minikube tunnel
 ```
 
 ---
@@ -87,6 +91,8 @@ https://wisecow.local
 ```
 
 You may see a certificate warning (self-signed cert); this is expected for local development.
+
+![KubeArmor Log Probe](assets/wisecow.png)
 
 ---
 
