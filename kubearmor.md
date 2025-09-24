@@ -2,7 +2,7 @@
 
 This repository demonstrates the installation and usage of **KubeArmor** for enforcing **zero-trust security policies** in a Kubernetes cluster.
 
-![KubeArmor Architecture](assets/image.png)
+![KubeArmor Log Probe](assets/probe.png)
 
 ---
 
@@ -76,8 +76,8 @@ Use `karmor` to view KubeArmor logs in JSON format:
 ```bash
 karmor logs -n default --json
 ```
+![KubeArmor Architecture](assets/image.png)
 
-![KubeArmor Log Probe](assets/probe.png)
 
 > The above image shows a sample **policy violation** captured by KubeArmor in JSON format. It demonstrates how unauthorized actions are blocked according to the zero-trust policy, including the process, file, or network event that triggered the violation.
 
