@@ -15,16 +15,16 @@ spec:
       - path: /usr/games/fortune    # fortune program
       - path: /usr/games/cowsay     # cowsay program
       - path: /usr/bin/nc           # netcat-openbsd
-    action: Allow
+    
   file:
     matchDirectories:
       - dir: /app/
         recursive: true
         readOnly: false
-    action: Allow
+    
   network:
     matchProtocols:
       - protocol: TCP
       - protocol: UDP   # needed for netcat if used with UDP
-    action: Allow
-  action: Block
+    
+  action: Allow
