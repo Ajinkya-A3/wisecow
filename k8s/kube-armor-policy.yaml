@@ -15,9 +15,9 @@ spec:
       - path: /usr/games/fortune    # fortune program
       - path: /usr/games/cowsay     # cowsay program
       - path: /usr/bin/nc           # netcat-openbsd
-      - path: /usr/bin/nc
+      - path: /usr/bin
   file:
-    matchDirectories:
+    matchDirectories:a
       - dir: /app/
         recursive: true
         readOnly: false
