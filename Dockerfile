@@ -33,4 +33,5 @@ USER wisecow
 EXPOSE 4499
 
 # Start the app
-CMD ["./wisecow.sh"]
+CMD ["bash", "wisecow.sh"]
+
