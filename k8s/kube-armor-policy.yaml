@@ -9,23 +9,38 @@ spec:
   selector:
     matchLabels:
       app: wisecow
+
+  # Allowed process executables
   process:
     matchPaths:
-      - path: /app/wisecow.sh       # main script
-      - path: /usr/games/fortune    # fortune program
-      - path: /usr/games/cowsay     # cowsay program
-      - path: /usr/bin/nc           # netcat-openbsd
-      - path: /bin/sh
+      - path: /app/wisecow.sh        # main script
       - path: /bin/bash
+      - path: /bin/sh
+      - path: /usr/games/fortune     # fortune binary
+      - path: /usr/games/cowsay      # cowsay binary
+      - path: /usr/bin/nc            # netcat
+      - path: /usr/bin/nc.openbsd    # netcat runtime binary
+      - path: /usr/bin/cat           # cat binary
+      - path: /usr/bin/sleep         # sleep command
+      - path: /usr/bin/perl          # used by fortune internally
+
+  # Allowed files/directories
   file:
     matchDirectories:
-      - dir: /app/
+      - dir: /app/                   # app directory & FIFO
         recursive: true
         readOnly: false
-    
+      - dir: /usr/share/games/fortunes/  # fortune data files
+        recursive: true
+        readOnly: true
+
+  # Allowed network protocols
   network:
     matchProtocols:
       - protocol: TCP
-      - protocol: UDP   # needed for netcat if used with UDP
-    
-  action: Allow
+      - protocol: UDP
+
+  # Action: allow all above
+  action:
+    Allow
+
