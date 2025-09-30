@@ -39,6 +39,10 @@ spec:
       - dir: /usr/share/perl/          # allow Perl standard libraries
         recursive: true
         readOnly: true
+      - dir: /usr/share/cowsay/cows/
+        recursive: true
+        readOnly: true  
+
   # Allowed network protocols
   network:
     matchProtocols:
