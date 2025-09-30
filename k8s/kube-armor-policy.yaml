@@ -33,7 +33,7 @@ spec:
       - dir: /usr/share/games/fortunes/  # fortune data files
         recursive: true
         readOnly: true
-      - dir: /usr/share/games/           # games data files
+      - dir: /usr/games/           # games data files
         recursive: true
         readOnly: true
 
