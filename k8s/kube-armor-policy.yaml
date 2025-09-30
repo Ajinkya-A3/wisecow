@@ -16,21 +16,22 @@ spec:
       - path: /app/wisecow.sh        # main script
       - path: /bin/bash
       - path: /bin/sh
-      - path: /usr/games/fortune     # fortune binary
-      - path: /usr/games/cowsay      # cowsay binary
-      - path: /usr/bin/nc            # netcat
-      - path: /usr/bin/nc.openbsd    # netcat runtime binary
-      - path: /usr/bin/cat           # cat binary
-      - path: /usr/bin/sleep         # sleep command
-      - path: /usr/bin/perl          # used by fortune internally
+      - path: /usr/bin/perl          # used to run cowsay/fortune
+      - path: /usr/bin/nc
+      - path: /usr/bin/nc.openbsd
+      - path: /usr/bin/cat
+      - path: /usr/bin/sleep
+      # Allow all binaries inside /usr/games recursively
+      - path: /usr/games
+        recursive: true
 
   # Allowed files/directories
   file:
     matchDirectories:
-      - dir: /app/                   # app directory & FIFO
+      - dir: /app/                        # app directory
         recursive: true
         readOnly: false
-      - dir: /usr/share/games/fortunes/  # fortune data files
+      - dir: /usr/share/games/fortunes/   # fortune data files
         recursive: true
         readOnly: true
 
@@ -43,4 +44,3 @@ spec:
   # Action: allow all above
   action:
     Allow
-
