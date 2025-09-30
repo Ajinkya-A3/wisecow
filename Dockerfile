@@ -15,10 +15,7 @@ RUN apt-get update && \
       perl && \
     rm -rf /var/lib/apt/lists/*
 
-# Create a non-root user for the app
-RUN useradd -m -s /bin/bash wisecow
-
-# Make sure /usr/games binaries are executable by everyone
+# Make sure /usr/games binaries are executable by all users
 RUN chmod +x /usr/games/cowsay /usr/games/fortune
 
 # Add /usr/games to PATH for all users
@@ -29,13 +26,13 @@ WORKDIR /app
 
 # Copy the main script & make it executable
 COPY wisecow.sh /app/wisecow.sh
-RUN chmod +x /app/wisecow.sh && chown -R wisecow:wisecow /app
-
-# Switch to the non-root user
-USER wisecow
+RUN chmod +x /app/wisecow.sh
 
 # Expose the app port
 EXPOSE 4499
+
+# Run as root
+USER root
 
 # Start the application
 CMD ["bash", "wisecow.sh"]
