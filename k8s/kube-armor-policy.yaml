@@ -36,7 +36,9 @@ spec:
       - dir: /usr/games/           # games data files
         recursive: true
         readOnly: true
-
+      - dir: /usr/share/perl/          # allow Perl standard libraries
+        recursive: true
+        readOnly: true
   # Allowed network protocols
   network:
     matchProtocols:
