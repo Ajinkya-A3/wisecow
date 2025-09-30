@@ -16,22 +16,24 @@ spec:
       - path: /app/wisecow.sh        # main script
       - path: /bin/bash
       - path: /bin/sh
-      - path: /usr/bin/perl          # used to run cowsay/fortune
+      - path: /usr/bin/perl          # perl interpreter
+      - path: /usr/games/fortune     # fortune binary
+      - path: /usr/games/cowsay      # cowsay binary
       - path: /usr/bin/nc
       - path: /usr/bin/nc.openbsd
       - path: /usr/bin/cat
       - path: /usr/bin/sleep
-      # Allow all binaries inside /usr/games recursively
-      - path: /usr/games
-        recursive: true
 
   # Allowed files/directories
   file:
     matchDirectories:
-      - dir: /app/                        # app directory
+      - dir: /app/                   # app directory & FIFO
         recursive: true
         readOnly: false
-      - dir: /usr/share/games/fortunes/   # fortune data files
+      - dir: /usr/share/games/fortunes/  # fortune data files
+        recursive: true
+        readOnly: true
+      - dir: /usr/share/games/           # games data files
         recursive: true
         readOnly: true
 
